@@ -1,0 +1,85 @@
+body {
+    font-family: 'Shadows Into Light Two', cursive;
+}
+.hfd {
+    font-family: 'Shadows Into Light', cursive;
+}
+.usrLoginSecC,.usrHeadC,.friendsInputC,.frzListC,.newToWebC,.oldToWebC,.imgUpStatusCls, .nofFrnd, .imgUpStatusClsFd {
+    display: none;
+}
+.image-preview__image {
+    display: none;
+    width: 100%;
+}
+
+
+.usrImg {
+    width: 100%;
+    max-width: 250px;
+}
+
+.prt {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+}
+/* .cont {
+    display: inline-block;
+}
+   */
+.image-preview {
+    min-height: 8rem;
+}
+
+
+
+.friends {
+    flex: 14%;
+    /* padding: 10px; */
+    /* margin: 5px; */
+    /* background-color: bisque; */
+    text-align: center;
+}
+
+.friends:nth-child(odd) {
+    color: rgb(255, 0, 179);
+}
+.friends:nth-child(even) {
+    color: green;
+    padding-top: 25px;
+}
+.friends:nth-child(3n+1) {
+    color: blue;
+}
+.friends:nth-child(4n+1) {
+    color:purple;
+}
+
+.friends img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    bottom: 0;
+    right: 0;
+    font-size: 0.5rem;
+}
+
+@media screen and (max-width: 800px) {
+    .friends {
+        flex: 20%;
+        max-width: 20%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .friends {
+        flex: 25%;
+        max-width: 25%;
+    }
+}

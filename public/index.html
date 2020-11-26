@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends forever</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css?v=<?=time();?>">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase.js"></script>
+
+    <!-- <script defer src="/__/firebase/7.17.1/firebase.js"></script>
+    <script defer src="/__/firebase/7.17.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.17.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.17.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.17.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/init.js"></script> -->
+
+</head>
+<body>
+    <div class="container">
+
+      <div class="usrLoginSecC" id="usrLoginSec">
+        <div class="flex justify-center items-center pt-8">
+            <div class="flex-row">
+                <div class="hfd text-bold text-2xl md:text-6xl">
+                    Friends forever
+                </div>
+                <div class="text-right text-sm md:text-2xl">
+                    Always better together..
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-end items-center">
+					<li class="m-2 rounded-full inline-flex">
+            <span style="display: none;" id="hmPgCpy">https://frienzshipday.web.app/</span>
+            <button class="flex-shrink-0 mx-2 border-transparent border-4 bg-blue-500 hover:bg-blue-700 text-white text-xs sm:text-sm py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onclick="copyToClipboard('#hmPgCpy')">Click to copy link</button>
+						<a href="fb-messenger://share/?link=https://frienzshipday.web.app/" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/facebook-messenger.png" height="36px" width="36px"/></a>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=https://frienzshipday.web.app/" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" height="36px" width="36px"/><a>
+						<a href="whatsapp://send?text=https://frienzshipday.web.app/" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" height="36px" width="36px"/></a>
+					</li>
+				</div>
+
+        <div class="flex-row justify-around py-6 items-center text-2xl text-bold">
+          <div class="text-sm">New User.?</div>
+          <div class="w-full md:w-1/2">
+            <form id="newUser">
+              <div class="my-4 border-b border-teal-500">
+                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 text-sm leading-tight focus:outline-none" type="text" placeholder="Your Email" aria-label="Your Email" autocomplete="off" id="newUsrMail" autofocus required>
+              </div>
+              <div class="border-b border-teal-500">
+                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 text-sm leading-tight focus:outline-none" type="text" placeholder="Your Name" aria-label="Full name" autocomplete="off" id="newUsrName" required>
+              </div>
+              <div class="flex mb-4 justify-around items-center py-2">
+                <div class="flex justify-center image-preview box-border h-auto w-32 border-4 border-gray-400 bg-gray-200 text-center items-center" id="imagePreview">
+                  <img class="image-preview__image" src="" alt="Image Preview">
+                  <span class="image-preview__default-text text-xs text-gray-700">Image Preview</span>
+                </div>
+                <div class="flex-row px-2">
+                  <div class="">
+                    <input type="file" name="inpFile" id="inpFile" accept=".jpg, .jpeg, .png" style="display: none;">
+                    <label for="inpFile" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xs sm:text-sm border-4 text-white py-1 px-2 mr-0 md:mr-4 rounded" style="cursor: pointer;">Your Image (Optional)</label>
+                  </div>
+                  <button class="flex-shrink-0 border-transparent w-full border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Create</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="text-sm">Registered User.?</div>
+          <div class="w-full md:w-1/2">
+            <form id="regUser">
+              <div class="my-4 border-b border-teal-500">
+                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 text-sm leading-tight focus:outline-none" type="text" placeholder="Your Email to Continue" aria-label="Your Email" autocomplete="off" id="regUsrMail" required>
+              </div>
+              <div class="flex my-4">
+                <button class="flex-shrink-0 border-transparent border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">View</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="imgUpStatusCls">
+        <div class="flex justify-center items-center pt-48" id="">
+          <div class="items-center text-sm sm:text-lg md:text-4xl">
+            Uploading Image <span class="text-red-600" id="imgUpStatus"></span><span class="text-red-600"> %</span> completed
+            <div class="flex justify-center py-4"><img src="loder1.gif" alt="" height="50px" width="50px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usrHeadC">
+        <div class="flex justify-around items-center " id="usrHead">
+            <div class="w-1/4">
+                <img class="usrImg rounded-full " src="" id="usrImage" alt="user">
+            </div>
+            <div class="flex-row">
+                <div class="hfd text-bold text-2xl md:text-6xl">
+                    Friends forever
+                </div>
+                <div class="text-right text-sm md:text-2xl">
+                    Always better together..
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- New User -->
+      <div class="newToWebC" id="newToWeb">
+        <div class="text-lg sm:text-xl py-6">Hi <span id="user"></span></div>
+        <div class="">
+          <div class="flex-col items-center">
+            <div class="flex-col">
+              <li class="m-2 rounded-full flex text-sm">Share this link with your friends so they can add their names</li>
+              <li class="m-2 rounded-full flex text-sm text-red-600"><span id="shToFdLink"></span></li>
+              <li class="m-2 rounded-full inline-flex">
+                <button class="flex-shrink-0 mx-2 border-transparent border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onclick="copyToClipboard('#shToFdLink')">Click to copy link</button>
+                <a id="msgrLink" target="_blank" class="hover:text-white" style="cursor:pointer"><img src="https://img.icons8.com/color/48/000000/facebook-messenger.png" height="36px" width="36px"/></a>
+                <a id="fbLink" href="#" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" height="36px" width="36px"/><a>
+                <a id="wpLink" href="#" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" height="36px" width="36px"/></a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing User -->
+      <div class="friendsInputC">
+        <div class="flex-row md:flex justify-around py-6 items-center text-2xl text-bold" id="friendsInput">
+          <div class="w-full takeFdInput">
+            <div class="text-lg sm:text-xl">
+                Help me to create my friendship tree
+            </div>
+            <div class="flex-row md:flex justify-between items-center">
+              <div class="">
+                <form id="inputForm">
+                  <div class="border-b border-teal-500">
+                    <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 text-sm leading-tight focus:outline-none" type="text" placeholder="Your Name" aria-label="Full name" autocomplete="off" id="frzName" required>
+                  </div>
+                  <div class="flex mb-4 justify-around items-center py-2">
+                    <div class="flex justify-center image-preview box-border h-auto w-32 border-4 border-gray-400 bg-gray-200 text-center items-center" id="imagePreviewFd">
+                      <img class="image-preview__image" src="" alt="Image Preview">
+                      <span class="image-preview__default-text text-xs text-gray-700">Image Preview</span>
+                    </div>
+                    <div class="flex-row px-2">
+                      <div class="">
+                        <input type="file" name="inpFileFd" id="inpFileFd" accept=".jpg, .jpeg, .png" style="display: none;">
+                        <label for="inpFileFd" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xs sm:text-sm border-4 text-white py-1 px-2 mr-0 md:mr-4 rounded" style="cursor: pointer;">Your Image (Optional)</label>
+                      </div>
+                      <button class="flex-shrink-0 border-transparent w-full border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Add</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="flex-row">
+                <div class="">
+                  <div class="items-center text-sm sm:text-md">Create your own friendship tree</div>
+                </div>
+                <div class="">
+                  <button class="flex-shrink-0 mx-2 border-transparent border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onclick="window.open('https://frienzshipday.web.app/','_self',false)">Create Here</button>
+                </div>
+                <div class="imgUpStatusClsFd">
+                  <div class="flex justify-center items-center py-2" id="">
+                    <div class="items-center text-sm sm:text-md">
+                      Uploading Image <span class="text-red-600" id="imgUpStatusFd"></span><span class="text-red-600">%</span> completed
+                      <div class="flex justify-center py-2"><img src="loder1.gif" alt="" height="50px" width="50px"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="" id="shOrCrt">
+            <div class="flex justify-end items-center">
+              <div class="shOnlyUser flex-col text-center md:text-right">
+                <li class="m-2 rounded-full flex text-sm justify-center md:justify-end">Share this link with your friends so they can add their names</li>
+                <li class="m-2 rounded-full flex text-sm text-red-600 justify-center md:justify-end"><span id="shToFdLinkRu"></span></li>
+                <li class="m-2 rounded-full inline-flex">
+                  <button class="flex-shrink-0 mx-2 border-transparent border-4 bg-blue-500 hover:bg-blue-700 text-white text-sm py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" onclick="copyToClipboard('#shToFdLinkRu')">Click to copy link</button>
+                  <a id="msgrLinkRu" target="_blank" class="hover:text-white" style="cursor:pointer"><img src="https://img.icons8.com/color/48/000000/facebook-messenger.png" height="36px" width="36px"/></a>
+                  <a id="fbLinkRu" href="#" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" height="36px" width="36px"/><a>
+                  <a id="wpLinkRu" href="#" target="_blank" class="hover:text-white"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" height="36px" width="36px"/></a>
+                </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-lg sm:text-xl py-2 oldToWebC" id="oldToWeb">Close Friend of <span id="usrLoginName"></span></div>
+      <div class="text-center text-md sm:text-lg py-6 text-red-600 nofFrnd" id="">No friends to show.!! Share link with your friends..</div>
+
+      <div class="frzListC">
+        <div class="prt py-2" id="frzList">
+          <!-- <div class="friends">
+            <div class="">
+                <img class="rounded-full border-4" src="./usrDefault.jpg" alt="user">
+            </div>
+            <div class="text-center py-2 text-xs">Abhishek Arya</div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="p-1">
+          Having any issues or suggestion.?<br>
+          mail me at <a href="mailto:a4abhihek2015@gmail.com">a4abhishek2015@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+
+<script src="./script.js"></script>
+    
+</body>
+
+</html>
